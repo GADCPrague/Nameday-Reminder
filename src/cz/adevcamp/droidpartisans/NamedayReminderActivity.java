@@ -1,9 +1,9 @@
 package cz.adevcamp.droidpartisans;
 
-import android.app.ListActivity;
+import android.app.ExpandableListActivity;
 import android.os.Bundle;
 
-public class NamedayReminderActivity extends ListActivity {
+public class NamedayReminderActivity extends ExpandableListActivity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
