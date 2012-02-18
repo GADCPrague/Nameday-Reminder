@@ -66,11 +66,13 @@ public class CustomAdapter extends BaseExpandableListAdapter {
 		return 0;
 	}
 
+
 	public View getChildView(int groupPosition, int childPosition,
 			boolean isLastChild, View convertView, ViewGroup parent) {
 		View view=convertView;
 		if(view==null)
-			view=lIinflater.inflate(R.layout.child_layout, parent);
+			//nevim proc vyhazuje vyjimku ?
+			view=lIinflater.inflate(R.layout.rowitem, parent);
 		return view;
 	}
 
