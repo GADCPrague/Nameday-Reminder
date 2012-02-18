@@ -1,18 +1,12 @@
 package cz.adevcamp.droidpartisans;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.ObjectInputStream.GetField;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Vector;
 
-import android.app.Activity;
-import android.app.ListActivity;
-import android.content.Context;
-import android.content.res.Resources;
 
 public class NamedayCsvLoader {
 

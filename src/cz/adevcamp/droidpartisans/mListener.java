@@ -12,7 +12,7 @@ public class mListener implements OnClickListener {
 	}
 
 	public void onClick(View v) {
-		switch(v.getId()){//rozliseni ikon podle id
+		switch(v.getId()){//rozliseni eventu podle id
 		case R.id.iv_iconCall:Toast.makeText(mActivity, "call", Toast.LENGTH_LONG).show();break;
 		case R.id.iv_iconMess:Toast.makeText(mActivity, "mess", Toast.LENGTH_LONG).show();break;
 		}
