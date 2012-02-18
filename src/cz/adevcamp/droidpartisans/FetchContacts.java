@@ -7,62 +7,72 @@ import java.util.Vector;
 
 import cz.adevcamp.droidpartisans.NamedayCsvLoader.Day;
 
-
-import android.app.ListActivity;
+import android.app.ExpandableListActivity;
 import android.app.ProgressDialog;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.provider.ContactsContract;
 
-
-public class FetchContacts extends AsyncTask<String, Integer, Boolean>{
-	ListActivity mActivity;
+public class FetchContacts extends AsyncTask<String, Integer, Boolean> {
+	ExpandableListActivity mActivity;
 	ProgressDialog pdDialog;
 	List<Contact> lPeople;
 	Vector<Day> vDay;
-	public FetchContacts(ListActivity activity) {
-		this.mActivity=activity;
-		lPeople=new ArrayList<Contact>();
-		vDay=new Vector<NamedayCsvLoader.Day>();
+
+	public FetchContacts(ExpandableListActivity activity) {
+		this.mActivity = activity;
+		lPeople = new ArrayList<Contact>();
+		vDay = new Vector<NamedayCsvLoader.Day>();
 	}
 
-	protected void onPreExecute(){
-		pdDialog=new ProgressDialog(mActivity);
+	protected void onPreExecute() {
+		pdDialog = new ProgressDialog(mActivity);
 		pdDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 		pdDialog.setMax(100);
 		pdDialog.show();
-		
+
 	}
+
 	@Override
 	protected Boolean doInBackground(String... params) {
-		Cursor phones = mActivity.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,null,null, null);Cursor c=mActivity.getContentResolver().query(android.provider.ContactsContract.Contacts.CONTENT_URI,null,null,null,null); //vybrani vsech zaznamu
-		
-		while(phones.moveToNext()){
-			String[] sname=phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)).split(" ");
-			String name=sname[0];
-			String surname="";
-			if(sname.length>1)surname=sname[1];
-			String phoneNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-			   
+		Cursor phones = mActivity.getContentResolver().query(
+				ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null,
+				null, null);
+
+		while (phones.moveToNext()) {
+			String[] sname = phones
+					.getString(
+							phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
+					.split(" ");
+			String name = sname[0];
+			String surname = "";
+			if (sname.length > 1)
+				surname = sname[1];
+			String phoneNumber = phones
+					.getString(phones
+							.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+
 			lPeople.add(new Contact(1, name, surname, phoneNumber));
 			publishProgress(1);
 		}
-		 InputStream is=mActivity.getResources().openRawResource(R.raw.namedays_cz_rev);
-		 vDay=NamedayCsvLoader.getCalendar(new Vector<Contact>(lPeople), is);
-		
+		InputStream is = mActivity.getResources().openRawResource(
+				R.raw.namedays_cz_rev);
+		vDay = NamedayCsvLoader.getCalendar(new Vector<Contact>(lPeople), is);
+
 		return true;
-		
+
 	}
-	
-	protected void onProgressUpdate(Integer... i){
+
+	protected void onProgressUpdate(Integer... i) {
 		pdDialog.incrementProgressBy(i[0]);
-		
+
 	}
-	protected void onPostExecute(final Boolean state){
+
+	protected void onPostExecute(final Boolean state) {
 		pdDialog.dismiss();
-		CustomAdapter adapter = new CustomAdapter(mActivity,lPeople,vDay);
+		CustomAdapter adapter = new CustomAdapter(mActivity, lPeople, vDay);
 		mActivity.setListAdapter(adapter);
-		
+
 	}
-	
+
 }

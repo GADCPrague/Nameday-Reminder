@@ -15,10 +15,8 @@ public final class R {
     }
     public static final class id {
         public static final int button=0x7f060000;
-        public static final int frame=0x7f060005;
         public static final int iv_iconCall=0x7f060003;
         public static final int iv_iconMess=0x7f060004;
-        public static final int iv_iconTest=0x7f060006;
         public static final int tv_contactName=0x7f060002;
         public static final int tv_date=0x7f060001;
     }

@@ -4,17 +4,16 @@ import java.util.List;
 import java.util.Vector;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
-public class CustomAdapter extends BaseAdapter{
+
+public class CustomAdapter extends BaseExpandableListAdapter{
 	Activity mContext;
 	List<Contact> lContacts;
 	Vector<NamedayCsvLoader.Day> vDay;
@@ -41,8 +40,6 @@ public class CustomAdapter extends BaseAdapter{
 	public long getItemId(int position) {
 		return vDay.get(position).hashCode();
 	}
-
-	int uglyTmp = -1;
 	
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		v=convertView;
@@ -62,24 +59,59 @@ public class CustomAdapter extends BaseAdapter{
 		tv_name.setText(vDay.get(position).dateName);
 		iv_iconCall.setImageResource(R.drawable.ic_launcher);
 		iv_iconMess.setImageResource(R.drawable.ic_launcher);
-		
-		if (uglyTmp == position){
-			View vv= v.findViewById(R.id.frame);
-			ImageView iw=(ImageView) vv.findViewById(R.id.iv_iconTest);
-			iw.setImageResource(R.drawable.ic_launcher);
-			vv.setVisibility(View.VISIBLE);
-		}
-		tv_name.setOnClickListener(new View.OnClickListener() {
-			
-			public void onClick(View varg) {
-				uglyTmp = position;
-//				View vv= v.findViewById(R.id.frame);
-//				ImageView iw=(ImageView) vv.findViewById(R.id.iv_iconTest);
-//				iw.setImageResource(R.drawable.ic_launcher);
-//				vv.setVisibility(View.VISIBLE);
-			}
-		});
+	
 		return v;
+	}
+
+	public Object getChild(int groupPosition, int childPosition) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public long getChildId(int groupPosition, int childPosition) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public View getChildView(int groupPosition, int childPosition,
+			boolean isLastChild, View convertView, ViewGroup parent) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int getChildrenCount(int groupPosition) {
+		// TODO Auto-generated method stub
+		return vDay.get(groupPosition).contacts.size();
+	}
+
+	public Object getGroup(int groupPosition) {
+		// TODO Auto-generated method stub
+		return vDay.get(groupPosition).contacts;
+	}
+
+	public int getGroupCount() {
+		// TODO Auto-generated method stub
+		return vDay.size();
+	}
+
+	public long getGroupId(int groupPosition) {
+		return groupPosition;
+	}
+
+	public View getGroupView(int groupPosition, boolean isExpanded,
+			View convertView, ViewGroup parent) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean hasStableIds() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean isChildSelectable(int groupPosition, int childPosition) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
