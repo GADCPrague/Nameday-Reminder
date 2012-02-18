@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class CustomAdapter extends BaseAdapter{
@@ -41,7 +42,9 @@ public class CustomAdapter extends BaseAdapter{
 		return vDay.get(position).hashCode();
 	}
 
-	public View getView(int position, View convertView, ViewGroup parent) {
+	int uglyTmp = -1;
+	
+	public View getView(final int position, View convertView, ViewGroup parent) {
 		v=convertView;
 		if(v==null)
 			v=lIinflater.inflate(R.layout.rowitem, null);
@@ -51,6 +54,7 @@ public class CustomAdapter extends BaseAdapter{
 			ImageView iv_iconCall=(ImageView) v.findViewById(R.id.iv_iconCall);
 			ImageView iv_iconMess=(ImageView) v.findViewById(R.id.iv_iconMess);
 			
+			
 		
 		tv_date.setText(vDay.get(position).date);
 		
@@ -59,6 +63,22 @@ public class CustomAdapter extends BaseAdapter{
 		iv_iconCall.setImageResource(R.drawable.ic_launcher);
 		iv_iconMess.setImageResource(R.drawable.ic_launcher);
 		
+		if (uglyTmp == position){
+			View vv= v.findViewById(R.id.frame);
+			ImageView iw=(ImageView) vv.findViewById(R.id.iv_iconTest);
+			iw.setImageResource(R.drawable.ic_launcher);
+			vv.setVisibility(View.VISIBLE);
+		}
+		tv_name.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View varg) {
+				uglyTmp = position;
+//				View vv= v.findViewById(R.id.frame);
+//				ImageView iw=(ImageView) vv.findViewById(R.id.iv_iconTest);
+//				iw.setImageResource(R.drawable.ic_launcher);
+//				vv.setVisibility(View.VISIBLE);
+			}
+		});
 		return v;
 	}
 

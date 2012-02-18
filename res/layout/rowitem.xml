@@ -2,10 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" android:weightSum="100">
-    
-
-    <TextView
+    android:orientation="vertical" >
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        >
+        <TextView
         android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
@@ -28,8 +32,9 @@
         android:id="@+id/iv_iconCall"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
         android:layout_weight="15"
+        
         >
     </ImageView>
     <ImageView
@@ -37,8 +42,29 @@
         android:id="@+id/iv_iconMess"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
         android:layout_weight="15"
+        android:layout_gravity="center_horizontal|right"
+        
         >
     </ImageView>
+        
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" >
+
+         <ImageView
+        android:contentDescription="@string/iv_icon"
+        android:id="@+id/iv_iconTest"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginRight="4dp"
+        android:layout_gravity="center_horizontal|right"
+        
+        />
+    </FrameLayout>
 </LinearLayout>
