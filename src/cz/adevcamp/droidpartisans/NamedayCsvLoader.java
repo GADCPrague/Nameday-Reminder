@@ -14,7 +14,7 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.res.Resources;
 
-public class NamedayCsvLoader extends Activity{
+public class NamedayCsvLoader {
 
 	public static class Day {
 		public String date;
@@ -60,9 +60,6 @@ public class NamedayCsvLoader extends Activity{
 		try {
 
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
-
-//			BufferedReader br = new BufferedReader(new FileReader("res/raw/namedays_cz_rev.csv"));
-
 
 			String line = br.readLine();
 

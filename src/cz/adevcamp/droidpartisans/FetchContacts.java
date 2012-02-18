@@ -1,7 +1,11 @@
 package cz.adevcamp.droidpartisans;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
+
+import cz.adevcamp.droidpartisans.NamedayCsvLoader.Day;
 
 
 import android.app.ListActivity;
@@ -15,9 +19,11 @@ public class FetchContacts extends AsyncTask<String, Integer, Boolean>{
 	ListActivity mActivity;
 	ProgressDialog pdDialog;
 	List<Contact> lPeople;
+	Vector<Day> vDay;
 	public FetchContacts(ListActivity activity) {
 		this.mActivity=activity;
 		lPeople=new ArrayList<Contact>();
+		vDay=new Vector<NamedayCsvLoader.Day>();
 	}
 
 	protected void onPreExecute(){
@@ -41,6 +47,8 @@ public class FetchContacts extends AsyncTask<String, Integer, Boolean>{
 			lPeople.add(new Contact(1, name, surname, phoneNumber));
 			publishProgress(1);
 		}
+		 InputStream is=mActivity.getResources().openRawResource(R.raw.namedays_cz_rev);
+		 vDay=NamedayCsvLoader.getCalendar(new Vector<Contact>(lPeople), is);
 		
 		return true;
 		
@@ -52,7 +60,7 @@ public class FetchContacts extends AsyncTask<String, Integer, Boolean>{
 	}
 	protected void onPostExecute(final Boolean state){
 		pdDialog.dismiss();
-		CustomAdapter adapter = new CustomAdapter(mActivity,lPeople);
+		CustomAdapter adapter = new CustomAdapter(mActivity,lPeople,vDay);
 		mActivity.setListAdapter(adapter);
 		
 	}
