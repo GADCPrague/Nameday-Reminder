@@ -28,16 +28,19 @@ public class FetchContacts extends AsyncTask<String, Integer, Boolean> {
 	protected void onPreExecute() {
 		pdDialog = new ProgressDialog(mActivity);
 		pdDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-		pdDialog.setMax(100);
+		// pdDialog.setMax(100);
 		pdDialog.show();
 
 	}
 
 	@Override
 	protected Boolean doInBackground(String... params) {
+
 		Cursor phones = mActivity.getContentResolver().query(
 				ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null,
 				null, null);
+		
+		pdDialog.setMax(phones.getCount());
 
 		while (phones.moveToNext()) {
 			String[] sname = phones
