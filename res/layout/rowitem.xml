@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" android:weightSum="100">
+    
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:gravity="center_vertical|left"
+        android:textSize="20dp" 
+        android:layout_weight="25">
+    </TextView>
+    
+    <TextView
+        android:id="@+id/tv_contactName"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:gravity="center_vertical|left"
+        android:textSize="20dp" 
+        android:layout_weight="45">
+    </TextView>
+    
+<ImageView
+        android:contentDescription="@string/iv_icon"
+        android:id="@+id/iv_iconCall"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="4dp"
+        android:layout_weight="15"
+        >
+    </ImageView>
+    <ImageView
+        android:contentDescription="@string/iv_icon"
+        android:id="@+id/iv_iconMess"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="4dp"
+        android:layout_weight="15"
+        >
+    </ImageView>
+</LinearLayout>

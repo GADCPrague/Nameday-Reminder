@@ -2,12 +2,19 @@ package cz.adevcamp.droidpartisans;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream.GetField;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Vector;
 
-public class NamedayCsvLoader {
+import android.app.Activity;
+import android.app.ListActivity;
+import android.content.Context;
+import android.content.res.Resources;
+
+public class NamedayCsvLoader extends Activity{
 
 	public static class Day {
 		public String date;
@@ -25,32 +32,37 @@ public class NamedayCsvLoader {
 		}
 	}
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) throws Exception {
-		
-		Vector<String> names = new Vector<String>();
-
-		names.add("Karina");
-		names.add("Jitka");
-		names.add("Dalimil");
-		names.add("Adam");
-		names.add("Eva");
-		
-		Vector<Day> days = getCalendar(names);
-		System.out.println(days);
-		
+	public NamedayCsvLoader(ListActivity mActivity) {
 		
 	}
 
-	public static Vector<Day> getCalendar(Vector<String> contacts) {
+	/**
+	 * @param args
+	 */
+//	public static void main(String[] args) throws Exception {
+//		
+//		Vector<String> names = new Vector<String>();
+//
+//		names.add("Karina");
+//		names.add("Jitka");
+//		names.add("Dalimil");
+//		names.add("Adam");
+//		names.add("Eva");
+//		
+//		Vector<Day> days = getCalendar(names);
+//		System.out.println(days);
+//		
+//		
+//	}
+
+	
+	public static Vector<Day> getCalendar(Vector<String> contacts, InputStream is) {
 		Vector<Day> days = new Vector<Day>();
 		Map<String, Day> name2date = new TreeMap<String, Day>();
 
+		
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("res/raw/namedays-cz-rev.csv"));
-
+			BufferedReader br = new BufferedReader(new InputStreamReader(is));
 			String line = br.readLine();
 
 			while (line != null) {

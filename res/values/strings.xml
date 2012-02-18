@@ -3,6 +3,6 @@
 
     <string name="hello">Hello, this is Nameday Reminder! ;)</string>
     <string name="app_name">Nameday Reminder</string>
-    
+    <string name="iv_icon">icon</string>
 
 </resources>
