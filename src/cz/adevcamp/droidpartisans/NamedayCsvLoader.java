@@ -12,7 +12,7 @@ public class NamedayCsvLoader {
 	public static class Day {
 		public String date;
 		public String dateName;
-		public Vector<String> contacts = new Vector<String>();
+		public Vector<Contact> contacts = new Vector<Contact>();
 
 		public Day(String date, String dateName) {
 			this.date = date;
@@ -21,7 +21,7 @@ public class NamedayCsvLoader {
 
 		@Override
 		public String toString() {
-			return "Name: " + dateName + ", date: " + date + ", contacts: " + contacts + "\n" ;
+			return "\nName: " + dateName + ", date: " + date + ", contacts: " + contacts;
 		}
 	}
 
@@ -30,26 +30,26 @@ public class NamedayCsvLoader {
 	 */
 	public static void main(String[] args) throws Exception {
 		
-		Vector<String> names = new Vector<String>();
+		Vector<Contact> contacts = new Vector<Contact>();
 
-		names.add("Karina");
-		names.add("Jitka");
-		names.add("Dalimil");
-		names.add("Adam");
-		names.add("Eva");
+		contacts.add(new Contact(1, "Karina", "Janečková", "555263882"));
+		contacts.add(new Contact(1, "Jitka", "Telecí", "555263882"));
+		contacts.add(new Contact(1, "Dalimil", "Míšová", "555263882"));
+		contacts.add(new Contact(1, "Adam", "Jandová", "555263882"));
+		contacts.add(new Contact(1, "Eva", "Novotná", "555263882"));
 		
-		Vector<Day> days = getCalendar(names);
+		Vector<Day> days = getCalendar(contacts	);
 		System.out.println(days);
 		
 		
 	}
 
-	public static Vector<Day> getCalendar(Vector<String> contacts) {
+	public static Vector<Day> getCalendar(Vector<Contact> contacts) {
 		Vector<Day> days = new Vector<Day>();
 		Map<String, Day> name2date = new TreeMap<String, Day>();
 
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("res/raw/namedays-cz-rev.csv"));
+			BufferedReader br = new BufferedReader(new FileReader("res/raw/namedays_cz_rev.csv"));
 
 			String line = br.readLine();
 
@@ -82,8 +82,8 @@ public class NamedayCsvLoader {
 			
 		}
 		
-		for (String contact:contacts) {
-			Day day = name2date.get(contact);
+		for (Contact contact:contacts) {
+			Day day = name2date.get(contact.getName());
 			
 			if (null != day) {
 				day.contacts.add(contact);

@@ -14,6 +14,11 @@ public final class Contact {
 		this.number = number;
 	}
 
+	@Override
+	public String toString() {
+		return id + ": " + name + " " + surname + " (" + number + ")" ;
+	}
+
 	public int getId() {
 		return id;
 	}
