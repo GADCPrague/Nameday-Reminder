@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 
@@ -101,9 +102,10 @@ public class CustomAdapter extends BaseExpandableListAdapter{
 		
 		//tv_name.setText(((Contact)lContacts.get(position)).getName());
 		tv_name.setText(vDay.get(groupPosition).dateName);
-		iv_iconCall.setImageResource(R.drawable.ic_launcher);
-		iv_iconMess.setImageResource(R.drawable.ic_launcher);
-	
+		iv_iconCall.setImageResource(R.drawable.phone_icon);
+		iv_iconMess.setImageResource(R.drawable.sms_icon);
+		iv_iconCall.setOnClickListener(new mListener(mContext));// listener na event click ikony phone
+		iv_iconMess.setOnClickListener(new mListener(mContext));//listener na event click ikony message
 		return v;
 	}
 
