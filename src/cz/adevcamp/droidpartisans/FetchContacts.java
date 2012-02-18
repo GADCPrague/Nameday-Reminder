@@ -3,12 +3,13 @@ package cz.adevcamp.droidpartisans;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.provider.ContactsContract;
-import android.provider.ContactsContract.PhoneLookup;
+
 
 public class FetchContacts extends AsyncTask<String, Integer, Boolean>{
 	ListActivity mActivity;
@@ -51,7 +52,8 @@ public class FetchContacts extends AsyncTask<String, Integer, Boolean>{
 	}
 	protected void onPostExecute(final Boolean state){
 		pdDialog.dismiss();
-		
+		CustomAdapter adapter = new CustomAdapter(mActivity,lPeople);
+		mActivity.setListAdapter(adapter);
 		
 	}
 	
