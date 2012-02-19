@@ -1,6 +1,7 @@
 package cz.adevcamp.droidpartisans;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Map;
@@ -36,21 +37,22 @@ public class NamedayCsvLoader {
 	/**
 	 * @param args
 	 */
-//	public static void main(String[] args) throws Exception {
-//		
-//		Vector<Contact> contacts = new Vector<Contact>();
-//
-//		contacts.add(new Contact(1, "Karina", "Janečková", "555263882"));
-//		contacts.add(new Contact(1, "Jitka", "Telecí", "555263882"));
-//		contacts.add(new Contact(1, "Dalimil", "Míšová", "555263882"));
-//		contacts.add(new Contact(1, "Adam", "Jandová", "555263882"));
-//		contacts.add(new Contact(1, "Eva", "Novotná", "555263882"));
-//		
-//		Vector<Day> days = getCalendar(contacts	);
-//		System.out.println(days);
-//		
-//		
-//	}
+	public static void main(String[] args) throws Exception {
+		
+		Vector<Contact> contacts = new Vector<Contact>();
+
+		contacts.add(new Contact(1, "Karina", "Janečková", "555263882"));
+		contacts.add(new Contact(1, "Jitka", "Telecí", "555263882"));
+		contacts.add(new Contact(1, "Dalimil", "Míšová", "555263882"));
+		contacts.add(new Contact(1, "Adam", "Jandová", "555263882"));
+		contacts.add(new Contact(1, "Eva", "Novotná", "555263882"));
+		contacts.add(new Contact(1, "Jan", "Nepomuk", "555263882"));
+		contacts.add(new Contact(1, "Honza", "Veliký", "555363882"));
+		
+		Vector<Day> days = getCalendar(contacts, new FileInputStream("res/raw/namedays_cz_rev.csv"));
+		
+		System.out.println(days);
+	}
 
 	/**
 	 * Create Name Day calendar, populate calendar with contacts
@@ -68,10 +70,10 @@ public class NamedayCsvLoader {
 			String line = br.readLine();
 
 			while (line != null) {
-				String[] parsedRow = line.split(",");	// row has format "Lenka,21.2."
+				String[] parsedRow = line.split(",");	// row has format "Lenka,21.2.,nickname1,nickname2"
 				String name = parsedRow[0];
 				String date = parsedRow[1];
-				String[] names = name.split(" ");		// name can have format "Adam a Eva"
+				String[] names = name.split(" a ");		// name can have format "Adam a Eva"
 
 				Day day = new Day(date, name);	
 				
@@ -81,6 +83,13 @@ public class NamedayCsvLoader {
 				/* populate index mapping names to entries in calendar */
 				for (String tinyName : names) {
 					name2date.put(tinyName, day);
+				}
+				
+				/* populate index with aliases of names */
+				for (int i = 2; i < parsedRow.length; i++) {
+					String alias = parsedRow[i];
+					
+					name2date.put(alias, day);
 				}
 
 				line = br.readLine();
