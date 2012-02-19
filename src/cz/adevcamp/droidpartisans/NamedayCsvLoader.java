@@ -70,7 +70,7 @@ public class NamedayCsvLoader {
 			String line = br.readLine();
 
 			while (line != null) {
-				String[] parsedRow = line.split(",");	// row has format "Lenka,21.2."
+				String[] parsedRow = line.split(",");	// row has format "Lenka,21.2.,nickname1,nickname2"
 				String name = parsedRow[0];
 				String date = parsedRow[1];
 				String[] names = name.split(" a ");		// name can have format "Adam a Eva"
