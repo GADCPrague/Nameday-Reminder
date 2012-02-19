@@ -28,12 +28,12 @@ public class mListener implements OnClickListener {
 		
 			case R.id.iv_iconCall:
 				call();
-				Toast.makeText(mActivity, "Zavolejte", Toast.LENGTH_LONG).show();
+				Toast.makeText(mActivity, "Zavolejte oslavenci", Toast.LENGTH_LONG).show();
 				break;
 				
 			case R.id.iv_iconMess:
 				write();
-				Toast.makeText(mActivity, "Napište SMS", Toast.LENGTH_LONG).show();
+				Toast.makeText(mActivity, "Napište přání k svátku", Toast.LENGTH_LONG).show();
 				break;
 		}
 	}
