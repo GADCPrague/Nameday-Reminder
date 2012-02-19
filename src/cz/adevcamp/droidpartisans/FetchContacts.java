@@ -25,6 +25,7 @@ public class FetchContacts extends AsyncTask<String, Integer, Boolean> {
 		vDay = new Vector<NamedayCsvLoader.Day>();
 	}
 
+	@Override
 	protected void onPreExecute() {
 		pdDialog = new ProgressDialog(mActivity);
 		pdDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
@@ -66,11 +67,13 @@ public class FetchContacts extends AsyncTask<String, Integer, Boolean> {
 
 	}
 
+	@Override
 	protected void onProgressUpdate(Integer... i) {
 		pdDialog.incrementProgressBy(i[0]);
 
 	}
 
+	@Override
 	protected void onPostExecute(final Boolean state) {
 		pdDialog.dismiss();
 		CustomAdapter adapter = new CustomAdapter(mActivity, lPeople, vDay);
