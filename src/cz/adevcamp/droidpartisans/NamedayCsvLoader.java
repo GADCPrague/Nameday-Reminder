@@ -47,6 +47,7 @@ public class NamedayCsvLoader {
 		contacts.add(new Contact(1, "Adam", "Jandová", "555263882"));
 		contacts.add(new Contact(1, "Eva", "Novotná", "555263882"));
 		contacts.add(new Contact(1, "Jan", "Nepomuk", "555263882"));
+		contacts.add(new Contact(1, "Honza", "Veliký", "555363882"));
 		
 		Vector<Day> days = getCalendar(contacts, new FileInputStream("res/raw/namedays_cz_rev.csv"));
 		
@@ -82,6 +83,13 @@ public class NamedayCsvLoader {
 				/* populate index mapping names to entries in calendar */
 				for (String tinyName : names) {
 					name2date.put(tinyName, day);
+				}
+				
+				/* populate index with aliases of names */
+				for (int i = 2; i < parsedRow.length; i++) {
+					String alias = parsedRow[i];
+					
+					name2date.put(alias, day);
 				}
 
 				line = br.readLine();
