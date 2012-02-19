@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="horizontal" android:weightSum="100">
+    android:orientation="horizontal"
+    android:weightSum="100"
+    >
 
     <TextView
         android:id="@+id/tv_date"
@@ -29,7 +31,7 @@
 
 	<ImageView
         android:contentDescription="@string/iv_icon"
-        android:id="@+id/iv_iconCall"
+        android:id="@+id/iv_iconMess"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:paddingLeft="5dp"
@@ -39,10 +41,10 @@
 
     <ImageView
         android:contentDescription="@string/iv_icon"
-        android:id="@+id/iv_iconMess"
+        android:id="@+id/iv_iconCall"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_toLeftOf="@id/iv_iconCall"
+        android:layout_toLeftOf="@id/iv_iconMess"
         >
     </ImageView>
 
