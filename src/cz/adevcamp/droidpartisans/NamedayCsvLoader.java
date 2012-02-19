@@ -10,6 +10,7 @@ import java.util.Vector;
 /**
  * Provides Name Day calendar populated with contacts 
  */
+
 public class NamedayCsvLoader {
 
 	/**
