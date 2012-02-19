@@ -2,6 +2,8 @@ package cz.adevcamp.droidpartisans;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
@@ -78,7 +80,10 @@ public class FetchContacts extends AsyncTask<String, Integer, Boolean> {
 		pdDialog.dismiss();
 		CustomAdapter adapter = new CustomAdapter(mActivity, lPeople, vDay);
 		mActivity.setListAdapter(adapter);
-
+		
+		/* select current day in the calendar */
+		int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_YEAR);
+		mActivity.getExpandableListView().setSelectedGroup(currentDay - 1);
 	}
 
 }
