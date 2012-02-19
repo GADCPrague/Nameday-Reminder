@@ -95,13 +95,16 @@ public class CustomAdapter extends BaseExpandableListAdapter{
 			TextView tv_name=(TextView) v.findViewById(R.id.tv_contactName);
 			ImageView iv_iconCall=(ImageView) v.findViewById(R.id.iv_iconCall);
 			ImageView iv_iconMess=(ImageView) v.findViewById(R.id.iv_iconMess);
+		String dateName = 	vDay.get(groupPosition).dateName;
 			
-			
+		/* append number of known contacts to date name */
+		if (false == vDay.get(groupPosition).contacts.isEmpty()) {
+			dateName += " (" + vDay.get(groupPosition).contacts.size() + ")";
+		}
 		
 		tv_date.setText(vDay.get(groupPosition).date);
-		
 		//tv_name.setText(((Contact)lContacts.get(position)).getName());
-		tv_name.setText(vDay.get(groupPosition).dateName);
+		tv_name.setText(dateName);
 		iv_iconCall.setImageResource(R.drawable.phone_icon);
 		iv_iconMess.setImageResource(R.drawable.sms_icon);
 		iv_iconCall.setOnClickListener(new mListener(mContext));// listener na event click ikony phone
