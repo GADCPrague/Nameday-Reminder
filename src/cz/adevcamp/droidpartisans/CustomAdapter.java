@@ -32,8 +32,7 @@ public class CustomAdapter extends BaseExpandableListAdapter {
 	 *            - name day calendar populated with contacts with known
 	 *            calendar names
 	 */
-	CustomAdapter(ExpandableListActivity context, List<Contact> lContacts,
-			Vector<NamedayCsvLoader.Day> vDay) {
+	CustomAdapter(ExpandableListActivity context, List<Contact> lContacts, Vector<NamedayCsvLoader.Day> vDay) {
 		this.mContext = context;
 		this.lContacts = lContacts;
 		this.vDay = vDay;
@@ -46,8 +45,7 @@ public class CustomAdapter extends BaseExpandableListAdapter {
 	 * Upper level calendar entry - it is entry with date and name day e.g.
 	 * "21.2. Lenka"
 	 */
-	public View getGroupView(int groupPosition, boolean isExpanded,
-			View convertView, ViewGroup parent) {
+	public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
 		View view = convertView;
 
 		if (view == null)
@@ -89,15 +87,14 @@ public class CustomAdapter extends BaseExpandableListAdapter {
 	 * Lower level calendar entry - it is entry with contact details and
 	 * call/sms buttons e.g. "Jan Novak <call> <sms>"
 	 */
-	public View getChildView(int groupPosition, int childPosition,
-			boolean isLastChild, View convertView, ViewGroup parent) {
+	public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 		View view = convertView;
 
 		if (view == null)
 
 			view = lIinflater.inflate(R.layout.rowsubitem, null);
 
-		/* find contact data and create label with contact nam */
+		/* find contact data and create label with contact name */
 		Contact contact = (Contact) getChild(groupPosition, childPosition);
 		String name = contact.getName() + " " + contact.getSurname();
 
@@ -109,10 +106,8 @@ public class CustomAdapter extends BaseExpandableListAdapter {
 		tv_name.setText(name);
 		iv_iconCall.setImageResource(R.drawable.icon_nixus_sms);
 		iv_iconMess.setImageResource(R.drawable.icon_ww_phone);
-		iv_iconCall.setOnClickListener(new mListener(mContext, contact
-				.getNumber())); // handle call
-		iv_iconMess.setOnClickListener(new mListener(mContext, contact
-				.getNumber())); // handle sms
+		iv_iconCall.setOnClickListener(new mListener(mContext, contact.getNumber())); // handle call
+		iv_iconMess.setOnClickListener(new mListener(mContext, contact.getNumber())); // handle sms
 
 		return view;
 	}
