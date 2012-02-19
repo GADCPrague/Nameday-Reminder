@@ -10,30 +10,25 @@ import android.widget.Toast;
 
 public class mListener implements OnClickListener {
 	Activity mActivity;
-	public mListener(Activity activity) {
-		this.mActivity=activity;
+	String   mNumber;
+	public mListener(Activity activity, String number) {
+		this.mActivity = activity;
+		this.mNumber = number;
 	}
 
 	public void onClick(View v) {
 		switch(v.getId()){//rozliseni eventu podle id
-		case R.id.iv_iconCall:call(); Toast.makeText(mActivity, "call", Toast.LENGTH_LONG).show();break;
-		case R.id.iv_iconMess:write();Toast.makeText(mActivity, "mess", Toast.LENGTH_LONG).show();break;
+		case R.id.iv_iconCall:call(); Toast.makeText(mActivity, "Zavolejte", Toast.LENGTH_LONG).show();break;
+		case R.id.iv_iconMess:write();Toast.makeText(mActivity, "Napište SMS", Toast.LENGTH_LONG).show();break;
 		}
 	}
 
 	private void write() {
-		//TODO change static nb
-		String defaultNb="123456789";
-		mActivity.startActivity(new Intent(Intent.ACTION_SENDTO,Uri.parse("smsto:" + defaultNb)));
-		
-		
+		mActivity.startActivity(new Intent(Intent.ACTION_SENDTO,Uri.parse("smsto:" + mNumber)));
 	}
 
 	private void call() {
-		//TODO change static nb
-		String defaultNb="123456789";
-		mActivity.startActivity(new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+defaultNb)));
-		
+		mActivity.startActivity(new Intent(Intent.ACTION_DIAL,Uri.parse("tel:" + mNumber)));
 	}
 
 }

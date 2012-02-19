@@ -74,12 +74,8 @@ public class CustomAdapter extends BaseExpandableListAdapter {
 		tv_name.setText(name);
 		iv_iconCall.setImageResource(R.drawable.icon_nixus_sms);
 		iv_iconMess.setImageResource(R.drawable.icon_ww_phone);
-		iv_iconCall.setOnClickListener(new mListener(mContext));// listener na
-		// event click
-		// ikony phone
-		iv_iconMess.setOnClickListener(new mListener(mContext));// listener na
-		// event click
-		// ikony message
+		iv_iconCall.setOnClickListener(new mListener(mContext, contact.getNumber()));  // handle call
+		iv_iconMess.setOnClickListener(new mListener(mContext, contact.getNumber()));  // handle sms
 
 		return view;
 	}
