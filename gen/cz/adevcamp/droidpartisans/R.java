@@ -12,27 +12,21 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
-        public static final int icon_idroid_phone=0x7f020001;
-        public static final int icon_idroid_sms=0x7f020002;
-        public static final int icon_j_phone=0x7f020003;
-        public static final int icon_j_sms=0x7f020004;
-        public static final int icon_nixus_phone=0x7f020005;
-        public static final int icon_nixus_sms=0x7f020006;
-        public static final int icon_ww_phone=0x7f020007;
-        public static final int icon_ww_sms=0x7f020008;
+        public static final int icon_nixus_sms=0x7f020001;
+        public static final int icon_ww_phone=0x7f020002;
+        public static final int icon_ww_phone_orig=0x7f020003;
     }
     public static final class id {
-        public static final int button=0x7f060001;
-        public static final int iv_iconCall=0x7f060005;
+        public static final int button=0x7f060000;
+        public static final int iv_iconCall=0x7f060003;
         public static final int iv_iconMess=0x7f060004;
-        public static final int tvTestName=0x7f060000;
-        public static final int tv_contactName=0x7f060003;
-        public static final int tv_date=0x7f060002;
+        public static final int tv_contactName=0x7f060002;
+        public static final int tv_date=0x7f060001;
     }
     public static final class layout {
-        public static final int child_layout=0x7f030000;
-        public static final int main=0x7f030001;
-        public static final int rowitem=0x7f030002;
+        public static final int main=0x7f030000;
+        public static final int rowitem=0x7f030001;
+        public static final int rowsubitem=0x7f030002;
     }
     public static final class raw {
         public static final int namedays_cz=0x7f040000;

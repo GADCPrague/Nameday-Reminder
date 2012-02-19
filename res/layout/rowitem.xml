@@ -31,20 +31,10 @@
 
 	<ImageView
         android:contentDescription="@string/iv_icon"
-        android:id="@+id/iv_iconMess"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:paddingLeft="5dp"
-        android:layout_alignParentRight="true"
-        >
-    </ImageView>
-
-    <ImageView
-        android:contentDescription="@string/iv_icon"
         android:id="@+id/iv_iconCall"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_toLeftOf="@id/iv_iconMess"
+        android:layout_alignParentRight="true"
         >
     </ImageView>
 
