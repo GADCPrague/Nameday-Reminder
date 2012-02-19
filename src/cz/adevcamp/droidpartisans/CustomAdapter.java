@@ -107,12 +107,10 @@ public class CustomAdapter extends BaseExpandableListAdapter {
 
 		/* populate contact name and install handlers for call/sms */
 		tv_name.setText(name);
-		iv_iconCall.setImageResource(R.drawable.icon_nixus_sms);
-		iv_iconMess.setImageResource(R.drawable.icon_ww_phone);
-		iv_iconCall.setOnClickListener(new mListener(mContext, contact
-				.getNumber())); // handle call
-		iv_iconMess.setOnClickListener(new mListener(mContext, contact
-				.getNumber())); // handle sms
+		iv_iconCall.setImageResource(R.drawable.icon_ww_phone);
+		iv_iconMess.setImageResource(R.drawable.icon_nixus_sms);
+		iv_iconCall.setOnClickListener(new mListener(mContext, contact.getNumber())); // handle call
+		iv_iconMess.setOnClickListener(new mListener(mContext, contact.getNumber())); // handle sms
 
 		return view;
 	}
