@@ -15,6 +15,7 @@ import android.app.ProgressDialog;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.provider.ContactsContract;
+import android.widget.ExpandableListView;
 
 public class FetchContacts extends AsyncTask<String, Integer, Boolean> {
 	ExpandableListActivity mActivity;
@@ -83,8 +84,18 @@ public class FetchContacts extends AsyncTask<String, Integer, Boolean> {
 		mActivity.setListAdapter(adapter);
 		
 		/* select current day in the calendar */
-		int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_YEAR);
-		mActivity.getExpandableListView().setSelectedGroup(currentDay - 1);
+		int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_YEAR) - 1;
+		ExpandableListView view = mActivity.getExpandableListView();
+		
+		/* scroll to current day */
+		view.setSelectedGroup(currentDay);
+		
+		/* expand 10 non-empty calendar entries */
+		for (int i = currentDay; i < vDay.size() && i < currentDay + 10; i++) {
+			if (!vDay.get(i).contacts.isEmpty()) {	// check whether calendar entry does contain any contacts
+				view.expandGroup(i); 	
+			}
+		}
 	}
 
 }
