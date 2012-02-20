@@ -1,4 +1,4 @@
-package cz.adevcamp.droidpartisans;
+package com.droidpartisans.namedayreminder;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -28,12 +28,12 @@ public class mListener implements OnClickListener {
 		
 			case R.id.iv_iconCall:
 				call();
-				Toast.makeText(mActivity, "Zavolejte oslavenci", Toast.LENGTH_LONG).show();
+				Toast.makeText(mActivity, "Call the honoured person", Toast.LENGTH_LONG).show();
 				break;
 				
 			case R.id.iv_iconMess:
 				write();
-				Toast.makeText(mActivity, "Napište přání k svátku", Toast.LENGTH_LONG).show();
+				Toast.makeText(mActivity, "Send a nameday congratulations", Toast.LENGTH_LONG).show();
 				break;
 		}
 	}

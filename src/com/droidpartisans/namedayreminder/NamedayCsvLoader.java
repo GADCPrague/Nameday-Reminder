@@ -1,4 +1,4 @@
-package cz.adevcamp.droidpartisans;
+package com.droidpartisans.namedayreminder;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

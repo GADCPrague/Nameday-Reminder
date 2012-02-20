@@ -1,4 +1,4 @@
-package cz.adevcamp.droidpartisans;
+package com.droidpartisans.namedayreminder;
 
 import android.app.ExpandableListActivity;
 import android.os.Bundle;

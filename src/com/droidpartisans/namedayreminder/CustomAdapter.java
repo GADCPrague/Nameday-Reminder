@@ -1,4 +1,4 @@
-package cz.adevcamp.droidpartisans;
+package com.droidpartisans.namedayreminder;
 
 import java.util.List;
 import java.util.Vector;

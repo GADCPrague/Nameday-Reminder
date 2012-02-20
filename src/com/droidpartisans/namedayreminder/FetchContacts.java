@@ -1,4 +1,4 @@
-package cz.adevcamp.droidpartisans;
+package com.droidpartisans.namedayreminder;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -7,7 +7,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
-import cz.adevcamp.droidpartisans.NamedayCsvLoader.Day;
+import com.droidpartisans.namedayreminder.NamedayCsvLoader.Day;
+
 
 import android.app.ExpandableListActivity;
 import android.app.ProgressDialog;
