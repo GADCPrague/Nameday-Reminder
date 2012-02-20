@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.Collator;
+import java.text.RuleBasedCollator;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Vector;
@@ -35,7 +37,7 @@ public class NamedayCsvLoader {
 	}
 	
 	/**
-	 * @param args
+	 * Poor man's unit test
 	 */
 	public static void main(String[] args) throws Exception {
 		
@@ -44,10 +46,15 @@ public class NamedayCsvLoader {
 		contacts.add(new Contact(1, "Karina", "Janečková", "555263882"));
 		contacts.add(new Contact(1, "Jitka", "Telecí", "555263882"));
 		contacts.add(new Contact(1, "Dalimil", "Míšová", "555263882"));
-		contacts.add(new Contact(1, "Adam", "Jandová", "555263882"));
+		contacts.add(new Contact(1, "Adam", "Janda", "555263882"));
 		contacts.add(new Contact(1, "Eva", "Novotná", "555263882"));
 		contacts.add(new Contact(1, "Jan", "Nepomuk", "555263882"));
 		contacts.add(new Contact(1, "Honza", "Veliký", "555363882"));
+		contacts.add(new Contact(1, "Eliška", "Pravá", "555363882"));
+		contacts.add(new Contact(1, "Eliska", "Leva", "555363882"));
+		contacts.add(new Contact(1, "Věra", "Pravá", "555363882"));
+		contacts.add(new Contact(1, "Vera", "Leva", "555363882"));
+		contacts.add(new Contact(1, "vera", "treti", "555363882"));
 		
 		Vector<Day> days = getCalendar(contacts, new FileInputStream("res/raw/namedays_cz_rev.csv"));
 		
@@ -62,9 +69,35 @@ public class NamedayCsvLoader {
 	 * @return
 	 */
 	public static Vector<Day> getCalendar(Vector<Contact> contacts, InputStream is) {
-		Vector<Day> calendar = new Vector<Day>();					// chronological name day calendar of the whole year
-		Map<String, Day> name2date = new TreeMap<String, Day>(); 	// index mapping names to entries in the calendar
+		Vector<Day> calendar = new Vector<Day>();		// chronological name day calendar of the whole year
+		Map<String, Day> name2date; 					// index mapping names to entries in the calendar
+		Collator collator = Collator.getInstance();		// initialised with default value - just for the case
 
+		/* our custom collation - system collation for czech does not work well (s != š)*/
+		try {
+			String rule = "< a,á,A,Á < b,B < c,č,C,Č " +
+					"< d,ď,D,Ď < e,é,ě,E,É,Ě < f,F < g,G < h,H " +
+					"< i,í,I,Í < j,J < k,K < l,ĺ,L,Ĺ < m,M " +
+					"< n,ň,N,Ň < o,ó,O,Ó < p,P < r,ř,ŕ,R,Ř,ŕ " +
+					"< s,š,S,Š < t,ť,T,Ť < u,ú,ů,U,Ú,Ů < v,V " +
+					"< x,X < y,ý,Y,Ý < z,ž,Z,Ž";
+			
+			collator = new RuleBasedCollator(rule);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		/* ignore case and accents */
+		collator.setStrength(Collator.PRIMARY);
+		collator.setDecomposition(Collator.CANONICAL_DECOMPOSITION);
+		
+//		System.out.println("Locale: e " + collator.compare("a", "A"));
+//		System.out.println("Locale: f " + collator.compare("a", "á"));
+//		System.out.println("Locale: g " + collator.compare("š", "s"));
+		
+		/* create index which will ignore case and accents */
+		name2date = new TreeMap<String, Day>(collator);
+		
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
 			String line = br.readLine();
