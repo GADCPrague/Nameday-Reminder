@@ -69,8 +69,8 @@ public class CustomAdapter extends BaseExpandableListAdapter {
 		/* show toggle button if group row contains any contacts */
 		if (vDay.get(groupPosition).contacts.isEmpty()) {
 			
-			/* hide toggle button in days with no matching contact */
-			iv_iconToggle.setImageDrawable(null);
+			/* disable toggle button in days with no matching contact */
+			iv_iconToggle.setImageResource(R.drawable.expander_ic_minimized_disabled);
 		} else {
 			
 			/* show collapsed / expanded toggle according to state of the row */
