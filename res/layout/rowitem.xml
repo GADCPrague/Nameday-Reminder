@@ -6,6 +6,21 @@
     android:weightSum="100"
     >
 
+	<RelativeLayout android:id="@+id/wrapper_iconToggle" 
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true">
+        <!-- wrapper is used to avoid scaling of the icon -->
+		<ImageView
+		       android:contentDescription="@string/iv_icon"
+		       android:id="@+id/iv_iconToggle"
+	           android:layout_width="wrap_content"
+               android:layout_height="wrap_content" 
+               android:layout_centerInParent="true">
+	   </ImageView>
+		
+	</RelativeLayout>
+	
     <TextView
         android:id="@+id/tv_date"
 		android:layout_width="wrap_content"

@@ -96,6 +96,9 @@ public class FetchContacts extends AsyncTask<String, Integer, Boolean> {
 				view.expandGroup(i); 	
 			}
 		}
+
+		/* hide default group indicator - we are drawing custom one */
+		view.setGroupIndicator(null);
 	}
 
 }

@@ -51,20 +51,36 @@ public class CustomAdapter extends BaseExpandableListAdapter {
 		if (view == null)
 			view = lIinflater.inflate(R.layout.rowitem, null);
 
+		ImageView iv_iconToggle = (ImageView) view.findViewById(R.id.wrapper_iconToggle)
+				.findViewById(R.id.iv_iconToggle);
 		TextView tv_date = (TextView) view.findViewById(R.id.tv_date);
 		TextView tv_name = (TextView) view.findViewById(R.id.tv_contactName);
 		String dateName = vDay.get(groupPosition).dateName;
 
 		// display number of known contacts for day name in the calendar
-		if (false == vDay.get(groupPosition).contacts.isEmpty()) {
+		if (!vDay.get(groupPosition).contacts.isEmpty()) {
 			dateName += " (" + vDay.get(groupPosition).contacts.size() + ")";
-		} else {
 		}
 
 		/* populate date and name day */
 		tv_date.setText(vDay.get(groupPosition).date);
 		tv_name.setText(dateName);
 
+		/* show toggle button if group row contains any contacts */
+		if (vDay.get(groupPosition).contacts.isEmpty()) {
+			
+			/* hide toggle button in days with no matching contact */
+			iv_iconToggle.setImageDrawable(null);
+		} else {
+			
+			/* show collapsed / expanded toggle according to state of the row */
+			if (isExpanded) {
+				iv_iconToggle.setImageResource(R.drawable.expander_ic_maximized);
+			} else {
+				iv_iconToggle.setImageResource(R.drawable.expander_ic_minimized);
+			}
+		}
+		
 		return view;
 	}
 
