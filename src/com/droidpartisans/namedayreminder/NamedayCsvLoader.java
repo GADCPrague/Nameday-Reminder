@@ -41,6 +41,7 @@ public class NamedayCsvLoader {
 	 */
 	public static void main(String[] args) throws Exception {
 		
+		/* check Czech calendar */
 		Vector<Contact> contacts = new Vector<Contact>();
 
 		contacts.add(new Contact(1, "Karina", "Janečková", "555263882"));
@@ -57,7 +58,21 @@ public class NamedayCsvLoader {
 		contacts.add(new Contact(1, "vera", "treti", "555363882"));
 		
 		Vector<Day> days = getCalendar(contacts, new FileInputStream("res/raw/namedays_cz_rev.csv"));
+		System.out.println(days);
 		
+		/* check Slovak calendar */
+		contacts = new Vector<Contact>();
+
+		contacts.add(new Contact(1, "Katarína", "Janečková", "555263882"));
+		contacts.add(new Contact(1, "Katka", "Telecí", "555263882"));
+		contacts.add(new Contact(1, "Adam", "Janda", "555263882"));
+		contacts.add(new Contact(1, "Eva", "Novotná", "555263882"));
+		contacts.add(new Contact(1, "Jan", "Nepomuk", "555263882"));
+		contacts.add(new Contact(1, "Janko", "Skvelý", "555263882"));
+		contacts.add(new Contact(1, "Štefan", "Pravý", "555363882"));
+		contacts.add(new Contact(1, "stevo", "velky", "555363882"));
+		
+		days = getCalendar(contacts, new FileInputStream("res/raw/namedays_sk_rev.csv"));
 		System.out.println(days);
 	}
 
@@ -75,7 +90,7 @@ public class NamedayCsvLoader {
 
 		/* our custom collation - system collation for czech does not work well (s != š)*/
 		try {
-			String rule = "< a,á,A,Á < b,B < c,č,C,Č " +
+			String rule = "< a,á,ä,A,Á < b,B < c,č,C,Č " +
 					"< d,ď,D,Ď < e,é,ě,E,É,Ě < f,F < g,G < h,H " +
 					"< i,í,I,Í < j,J < k,K < l,ĺ,L,Ĺ < m,M " +
 					"< n,ň,N,Ň < o,ó,O,Ó < p,P < r,ř,ŕ,R,Ř,ŕ " +
@@ -103,28 +118,51 @@ public class NamedayCsvLoader {
 			String line = br.readLine();
 
 			while (line != null) {
-				String[] parsedRow = line.split(",");	// row has format "Lenka,21.2.,nickname1,nickname2"
-				String name = parsedRow[0];
-				String date = parsedRow[1];
-				String[] names = name.split(" a ");		// name can have format "Adam a Eva"
+				String[] parsedRow = line.split(",");	// row has format "Ivana,Ivona,...,28.12.,Iva,nickname2,..."
+				String date = null;
+				Vector<String> names = new Vector<String>();	//< all names assigned to date
+				String calendarName = null;						//< 'official' name shown in the calendar 
+				
+				/* extract names and date */
+				for (String field : parsedRow) {
+					field = field.trim();
+					
+					/* record date */
+					if (field.matches("\\d+\\.\\d+\\.")) {
+						date = field;
+					} /* record name */
+					else {
+						String[] namesTmp = field.split(" a ");	// name can have format "Adam a Eva"
+						
+						/* record all names */
+						for (String name : namesTmp) {
+							names.add(name);
+						}
+						
+						/* 'official' calendar name is before the date */
+						if (null == date) {
+							if (null == calendarName) {
+								calendarName = field;
+							} /* more official names are separated by comma */
+							else {
+								calendarName += ", " + field;
+							}
+						}
+					}
+				}
 
-				Day day = new Day(date, name);	
+				/* create day */
+				Day day = new Day(date, calendarName);	
 				
 				/* append entry to calendar */
 				calendar.add(day);
 				
 				/* populate index mapping names to entries in calendar */
-				for (String tinyName : names) {
-					name2date.put(tinyName, day);
-				}
-				
-				/* populate index with aliases of names */
-				for (int i = 2; i < parsedRow.length; i++) {
-					String alias = parsedRow[i];
-					
-					name2date.put(alias, day);
+				for (String name : names) {
+					name2date.put(name, day);
 				}
 
+				/* read next line from CSV database */
 				line = br.readLine();
 			}
 

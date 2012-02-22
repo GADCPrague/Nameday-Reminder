@@ -1,4 +1,4 @@
-1.1.,-
+Nový Rok,1.1.
 Alexandra,Karina,2.1.,Ábel,Makar,Karin,Kara,Sandra,Saša
 Daniela,3.1.,Danila,Danuta,Genovéva,Radmila
 Drahoslav,4.1.,Drahoľub,Drahomil,Drahoň,Drahoš,Duchoslav,León,Títus,Drahoľuba,Drahomila,Duchoslava,Leóna,Leónia
@@ -64,10 +64,10 @@ Bohumil,Bohumila,3.3.,Ticián,Ginda,Kunigunda,Ticiána
 Kazimír,4.3.,Kevin,Gerazim,Romeo,Jadrana,Kazimíra
 Fridrich,5.3.,Lucius,Teofil,Friderika,Teofila
 Radoslav,Radoslava,6.3.,Fridolín,Koriolán,Radislav,Radovan,Felícia,Fridolína,Radislava
-Tomáš,7.3.,Tomislav,Tomáška,Tomislava
+Tomáš,7.3.,Tomislav,Tomáška,Tomislava,Tomo
 Alan,Alana,8.3.
 Františka,9.3.,Erhard
-Branislav,Bruno,10.3.,Bratislav,Bronislav,Bratislava,Taras
+Branislav,Bruno,10.3.,Bratislav,Bronislav,Bratislava,Taras,Braňo
 Angela,Angelika,11.3.,Angel,Volfram,Algelína,Jurina
 Gregor,12.3.,Teofan,Gregora,Gregoria,Gregorína
 Vlastimil,13.3.,Kira,Rozína
@@ -119,7 +119,7 @@ Jaroslav,27.4.,Aristid,Tulius,Aristída,Tulia
 Jarmila,28.4.,Prudencius,Prudencia
 Lea,29.4.,Timon
 Anastázia,30.4.,Anastáz,Blahomil,Asia,Blahomila,Nasťa,Nastasia
-1.5.,-,Amarila,Pamela
+Sviatok práce,1.5.,Amarila,Pamela
 Žigmund,2.5.,Atanáz,Atanázia,Aténa
 Galina,Timea,3.5.,Horác,Desana,Halina
 Florián,4.5.,Flór,Aglája,Floriána,Florína,Pelagia
@@ -173,12 +173,12 @@ Valéria,20.6.,Florencián,Florentín,Silver,Florencia,Florentína
 Alojz,21.6.,Elvis,Lejla
 Paulína,22.6.,Achác,Eberhard,Paulín,Paula,Rozvita,Zaira
 Sidónia,23.6.,Sidón
-Ján,24.6.,Janis,Jaško,Jens,Johan,Jovan,Nino,Sean
+Ján,24.6.,Janis,Jaško,Jens,Johan,Jovan,Nino,Sean,Jano,Janko
 Tadeáš,Olívia,25.6.,Olívius,Prosper,Febrónia,Oliva
 Adriána,26.6.,Stojan,Adriena,Ria,Riana,Stojana
 Ladislav,Ladislava,27.6.,Samson,Sulamita
 Beáta,28.6.,Beátus,Slavoj,Bea
-Peter,Pavol,Petra,29.6.,Pavel,Pavla,Petula
+Peter,Pavol,Petra,29.6.,Pavel,Pavla,Petula,Peťo,Paľo
 Melánia,30.6.,Vlastibor,Vlastimír,Šárka,Vlastimíra
 Diana,1.7.,Dean,Dejan,Dina,Zian,Dajana,Deana,Kalina,Tabita
 Berta,2.7.,Bertín,Bertína
@@ -228,10 +228,10 @@ Mojmír,14.8.,Eusébius,Mojtech,Eusébia
 Marcela,15.8.
 Leonard,16.8.,Jáchim,Joachim,Linhart,Rochus,Leonarda
 Milica,17.8.,Bertram,Bertrand,Hyacint,Libert,Miron,Hyacinta
-Elena,Helena,18.8.,Ilona
+Elena,Helena,18.8.,Ilona,Hela
 Lýdia,19.8.,Vratislava,Lilien
 Anabela,20.8.,Arabela,Liliana
-Jana,21.8.,Johana,Jovana
+Jana,21.8.,Johana,Jovana,Janka
 Tichomír,22.8.,Sigfríd,Tichomil,Tichomíra
 Filip,23.8.,Vlastislav,Filipa,Filipína,Vlastislava
 Bartolomej,24.8.,Bartolomea
@@ -275,7 +275,7 @@ Jarolím,30.9.,Hieronym,Jeremiáš,Jarolíma,Ráchel,Ráchela,Una
 Arnold,1.10.,Remig,Remus,Arnolda,Belina
 Levoslav,2.10.,Leodegar,Levoslava
 Stela,3.10.,Amadeus,Evald,Amadea
-František,4.10.,Edvin,Fraňo
+František,4.10.,Edvin,Fraňo,Fero
 Viera,5.10.,Blahomír,Placid,Blahomíra,Karitína,Placida
 Natália,6.10.
 Eliška,7.10.
@@ -304,7 +304,7 @@ Klára,29.10.,Narcis,Zenob,Klarisa,Narcisa,Zenóbia,Chiara
 Šimon,Simona,30.10.,Arzen,Asen,Simon,Asena,Simoneta,Šimona
 Aurélia,31.10.,Stacho,Volfgang
 Denis,Denisa,1.11.
-2.11.,-,Cézar,Cezária
+Pamiatka zosnulých,2.11.,Cézar,Cezária
 Hubert,3.11.
 Karol,4.11.,Džesika,Jesika,Karola,Skarleta,Jessica
 Imrich,5.11.,Emerich,Imriška
@@ -327,7 +327,7 @@ Elvíra,21.11.,Ctirad,Ctirada
 Cecília,22.11.,Cecilián,Šejla
 Klement,23.11.,Klementín,Kliment,Kolumbín,Klementína,Kolumbína
 Emília,24.11.,Milín,Milina
-Katarína,25.11.,Katrina
+Katarína,25.11.,Katrina,Katka
 Kornel,26.11.,Valerián
 Milan,27.11.,Nestor,Virgil,Milana
 Henrieta,28.11.,Gerhard,Tristan,Desdemona,Eta
@@ -357,8 +357,8 @@ Bohdan,21.12.
 Adela,22.12.,Ada,Adelaida,Adelgunda,Adelína,Adina,Alida
 Nadežda,23.12.,Naďa
 Adam,Eva,24.12.,Evamária,Evelína,Gaja,Gajana,Geja
-25.12.,-
-Štefan,26.12.
+1. Sviatok Vianočný,25.12.
+Štefan,26.12.,Števo
 Filoména,27.12.,Filomén
 Ivana,Ivona,28.12.,Iva
 Milada,29.12.,Jonatán,Miladín,Nátan,Natanel
